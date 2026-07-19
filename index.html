@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>ADX FACTORY 全体系ツリー（折りたたみ版）</title>
+<title>ADX FACTORY 全体系ツリー</title>
 <style>
 :root{--bg:#FFFFFF;--panel:#FAFAF8;--ink:#1E2126;--sub:#6A7076;--line:#E4E2DC;--gold:#A8801E;
 --phys:#8A2D3B;--atom:#1F3864;--gate:#B5432E;--why:#98A0A8;--sys:#5B6470;--mold:#7A5AC8;
@@ -22,43 +22,46 @@ h1{font-size:21px;font-weight:800}
 .toolbar button:hover{border-color:var(--gold);color:var(--gold)}
 .legend{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px}
 .lg{font-size:10px;font-weight:800;color:#fff;border-radius:999px;padding:2.5px 10px}
-details{border-left:2.5px solid var(--line);margin:6px 0 6px 4px;padding-left:0}
-details.top{border:1.5px solid var(--line);border-radius:14px;background:#fff;margin:10px 0;padding:0;border-left:1.5px solid var(--line)}
-details.top>summary{padding:13px 16px;border-radius:14px}
-details.top[open]>summary{border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
-details.top>*:not(summary){margin-left:16px;margin-right:12px}
-details.top>details:last-child{margin-bottom:12px}
-summary{cursor:pointer;font-weight:800;font-size:13.5px;padding:7px 8px;list-style:none;display:flex;align-items:center;gap:7px;flex-wrap:wrap;border-radius:8px}
-summary:hover{background:var(--panel)}
-summary::-webkit-details-marker{display:none}
-summary:before{content:"▸";color:var(--gold);font-size:11px;transition:transform .15s;flex:none}
-details[open]>summary:before{transform:rotate(90deg)}
-.nid{font-family:var(--num);font-size:10.5px;font-weight:700;color:var(--gold);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:1px 7px;flex:none}
+
+/* v5型: 常時表示グリッド */
+#tree{display:flex;flex-direction:column;gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;border-top:5px solid var(--gold);box-shadow:0 2px 10px rgba(30,33,38,.04)}
+.card>h2{font-size:14.5px;font-weight:800;text-align:center;display:flex;justify-content:center;gap:7px;align-items:center;flex-wrap:wrap}
+.card>.cmd0{display:block;text-align:center;font-size:10.5px;font-weight:700;color:var(--gold);margin:4px 0 10px}
+.card>.lead{font-size:11.5px;color:var(--sub);text-align:center;margin:2px 0 8px}
+.ph{font-size:12.5px;font-weight:800;display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:12px 0 4px}
+.ph .a{font-size:9px;font-weight:800;color:#fff;background:var(--atom);border-radius:999px;padding:1.5px 7px}
+.kids{list-style:none;margin:2px 0 0 7px;padding-left:12px;border-left:2px solid var(--line)}
+.kids>li{position:relative;padding:4px 0 4px 10px;font-size:11.8px}
+.kids>li:before{content:"";position:absolute;left:-12px;top:13px;width:16px;height:2px;background:var(--line)}
+.sub2{display:block;font-size:10px;color:var(--why);margin-top:1px}
+.sub2 b{color:var(--sub)}
+.mini{display:inline-block;font-size:8.5px;font-weight:800;border-radius:3px;padding:0 5px;margin-right:4px;color:#fff;vertical-align:1px}
+.m-dec{background:var(--gate)}.m-dod{background:var(--img2)}.m-ref{background:var(--gold)}
+.nid{font-family:var(--num);font-size:10px;font-weight:700;color:var(--gold);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:0 6px;flex:none}
 .ai{font-size:9px;font-weight:800;color:#fff;border-radius:4px;padding:1.5px 7px;flex:none}
 .a-cl{background:var(--claude)}.a-i2{background:var(--img2)}.a-nb{background:var(--nano)}.a-sd{background:var(--seed)}.a-vo{background:var(--voice)}.a-co{background:var(--council)}.a-ceo{background:var(--gate)}.a-ag{background:var(--agent)}.a-sys{background:var(--sys)}
-.gate-node>summary{background:color-mix(in srgb,var(--gate) 6%,#fff)}
-.body{font-size:12.3px;padding:4px 10px 10px 26px;color:var(--ink)}
-.body .f{margin:5px 0;display:flex;gap:8px;align-items:baseline}
-.body .k{flex:none;font-size:10px;font-weight:800;letter-spacing:.05em;color:#fff;border-radius:4px;padding:2px 8px;min-width:64px;text-align:center}
-.k-what{background:var(--sys)}
-.k-dec{background:var(--gate)}
-.k-dod{background:var(--img2)}
-.k-ref{background:var(--gold)}
-.k-why{background:#B9BFC6}
-.body .v{flex:1}
-.body .v b{font-weight:700}
-.cmd{font-size:10.5px;font-weight:700;color:var(--gold);border:1px dashed var(--gold);border-radius:999px;padding:2px 10px;flex:none}
-.newf{font-size:8.5px;font-weight:800;background:var(--gate);color:#fff;border-radius:4px;padding:1px 5px}
-.stat{font-family:var(--num);font-weight:700}
+.gate-t{color:var(--gate);font-weight:800}
+.wide{border-top-color:#5B6470}
+.axbox{background:#FFF7E0;border:1.5px solid #E8CB77;border-radius:14px;padding:13px 16px}
+.axbox h2{font-size:13px;font-weight:800;color:#7A5C0E;text-align:left}
+.axbox .lead{text-align:left;color:#4A3E14;font-size:11.8px}
+.axbox .kids{border-left-color:#E8CB77}
+.hookli{background:#FFF7E0;border:1px solid #E8CB77;border-radius:8px;padding:4px 8px}
+.sheetbox{background:var(--panel);border:1px dashed var(--council);border-radius:8px;padding:5px 8px;font-size:10.8px;margin-top:3px}
+.sheetbox b{color:var(--council)}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
 footer{color:var(--sub);font-size:10.5px;text-align:center;margin-top:30px}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>🏭 ADX FACTORY 全体系ツリー（折りたたみ版）</h1>
-<div class="sub">2026-07-17 制定 ／ クリックで展開。深く開くほど具体になります ── 担当AI・決めること・完了定義・参照元まで</div>
-<div class="fbnote"><b>📸 FBの仕方：</b>変えたい箇所を開いた状態でスクショ→「<b>この箇所（ID）をこう変えたい</b>」の一言でOK。各行の金色チップ（例 <span class="nid">L2-D1</span>）がノードIDです。FBは正本md＋このツリー両方に反映され、同じFBが2回来たら恒久ルールに自動昇格します。</div>
-<div class="toolbar"><button onclick="setAll(true)">すべて展開</button><button onclick="setAll(false)">すべて折りたたむ</button></div>
+<h1>🏭 ADX FACTORY 全体系ツリー</h1>
+<div class="sub">2026-07-17 制定 ／ 全工程を1枚で常時表示 ── 担当AI・決めること・完了定義・参照元まで</div>
+<div class="fbnote"><b>📸 FBの仕方：</b>変えたい箇所をスクショ→「<b>この箇所（ID）をこう変えたい</b>」の一言でOK。各行の金色チップ（例 <span class="nid">L2-D1</span>）がノードIDです。FBは正本md＋このツリー両方に反映され、同じFBが2回来たら恒久ルールに自動昇格します。</div>
+
 <div class="legend">
 <span class="lg" style="background:var(--claude)">Claude＝指揮・翻訳・組立・critic</span>
 <span class="lg" style="background:var(--council)">AI審議会＝Claude×Gemini/Codex</span>
@@ -194,17 +197,47 @@ const T=[
 ],{top:1}]
 ];
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
-function row(k,cls,v){return v?`<div class="f"><span class="k ${cls}">${k}</span><span class="v">${v}</span></div>`:""}
-function render(n,depth){
- const [id,title,ais=[],b={},kids=[],opt={}]=n;
- const aiTags=(ais||[]).map(a=>{const[label,cls]=AI[a];return `<span class="ai ${cls.trim()}">${label}</span>`}).join("");
- const body=row("やること","k-what",b.w)+row("決めること","k-dec",b.d)+row("完了定義","k-dod",b.o)+row("参照","k-ref",b.r)+row("なぜ","k-why",b.y);
- const cmd=opt.cmd?`<span class="cmd">${opt.cmd}</span>`:"";
- const cls=(opt.top?"top ":"")+(opt.gate?"gate-node":"");
- return `<details class="${cls}" ${depth<1?"open":""}><summary><span class="nid">${id}</span>${esc(title)}${aiTags}${cmd}</summary>${body?`<div class="body">${body}</div>`:""}${(kids||[]).map(k=>render(k,depth+1)).join("")}</details>`;
+function aiTags(ais){return (ais||[]).map(a=>{const[l,c]=AI[a];return `<span class="ai ${c.trim()}">${l}</span>`}).join("")}
+function fields(b){let s="";
+ if(b.d)s+=`<span class="sub2"><span class="mini m-dec">決</span>${b.d}</span>`;
+ if(b.o)s+=`<span class="sub2"><span class="mini m-dod">完了</span>${b.o}</span>`;
+ if(b.r)s+=`<span class="sub2"><span class="mini m-ref">参照</span>${b.r}</span>`;
+ if(b.y)s+=`<span class="sub2">${b.y}</span>`;
+ return s}
+function leaf(n){const[id,t,ais=[],b={},kids=[],opt={}]=n;
+ const gate=(opt.gate||/ゲート|承認/.test((b.d||"")+(b.o||"")))?"":"";
+ let inner=`${aiTags(ais)}<b>${esc(t)}</b>`;
+ if(b.w)inner+=` ${esc(b.w)}`;
+ let s=`<li class="${opt.hook?"hookli":""}"><span class="nid">${id}</span> ${inner}${fields(b)}`;
+ if(kids&&kids.length)s+=`<ul class="kids">${kids.map(leaf).join("")}</ul>`;
+ return s+"</li>"}
+function phase(n){const[id,t,ais=[],b={},kids=[],opt={}]=n;
+ let s=`<div class="ph"><span class="nid">${id}</span>${esc(t)}${aiTags(ais)}${opt.gate?'<span class="gate-t">←ゲート</span>':""}</div>`;
+ const bd=[];
+ if(b.w)bd.push(`<li><span class="nid" style="visibility:hidden">.</span>${esc(b.w)}${fields(b)}</li>`);
+ if(kids&&kids.length)s+=`<ul class="kids">${kids.map(leaf).join("")}</ul>`;
+ else if(b.w||b.d||b.o||b.r||b.y)s+=`<ul class="kids"><li>${b.w?esc(b.w):""}${fields(b)}</li></ul>`;
+ return s}
+function card(n,cls){const[id,t,ais=[],b={},kids=[],opt={}]=n;
+ let s=`<div class="card ${cls||""}"><h2><span class="nid">${id}</span>${esc(t)}${aiTags(ais)}</h2>`;
+ if(opt.cmd)s+=`<span class="cmd0">「${opt.cmd}」</span>`;
+ if(b.w)s+=`<div class="lead">${esc(b.w)}</div>`;
+ if(b.y)s+=`<div class="lead">${esc(b.y)}</div>`;
+ s+=(kids||[]).map(phase).join("");
+ return s+"</div>"}
+function build(){
+ const M=Object.fromEntries(T.map(n=>[n[0],n]));
+ let out="";
+ out+=card(M.ROOT);
+ out+=card(M.INF,"wide");
+ out+=`<div class="grid2">${card(M.P0)}${card(M.L0)}</div>`;
+ const asm=M.ASM;out+=`<div class="axbox card" style="border-top:0"><h2><span class="nid">ASM</span>${esc(asm[1])}</h2><div class="lead">${esc(asm[3].w||"")}</div><div class="lead"><b>決:</b> ${esc(asm[3].d||"")} ／ <b>なぜ:</b> ${esc(asm[3].y||"")}</div></div>`;
+ out+=`<div class="grid3">${card(M.L1)}${card(M.L2)}${card(M.L3)}</div>`;
+ out+=`<div class="grid3">${card(M.L4)}${card(M.L5)}${card(M.L6)}</div>`;
+ out+=card(M.FB);
+ document.getElementById("tree").innerHTML=out;
 }
-document.getElementById("tree").innerHTML=T.map(n=>render(n,0)).join("");
-function setAll(open){document.querySelectorAll("details").forEach(d=>d.open=open)}
+build();
 </script>
 </body>
 </html>
