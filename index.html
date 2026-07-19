@@ -6,13 +6,13 @@
 <meta name="robots" content="noindex, nofollow">
 <title>ADX FACTORY — 全体系フローチャート</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&family=Caveat:wght@500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Zen+Kurenaido&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FFFFFF;--ink:#111318;--dim:#153E8C;--line:#22242A;--red:#D81E24;--reddim:#D81E24;--panel:rgba(255,255,255,.85);
+:root{--bg:#FFFFFF;--ink:#000000;--dim:#000000;--line:#22242A;--red:#D81E24;--reddim:#D81E24;--panel:rgba(255,255,255,.85);
 --cl:#1646C8;--i2:#087A3C;--nb:#C25400;--sd:#6414D8;--vo:#D0106A;--co:#8A10D8;--ag:#0868B8;--ceo:#D81E24;--sys:#111318;
---hand:"Zen Kurenaido","Caveat",cursive;--mono:"SF Mono",Menlo,monospace}
+--hand:"Yusei Magic","Zen Kurenaido",cursive;--mono:"SF Mono",Menlo,monospace}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--hand);background:var(--bg);color:var(--ink);line-height:1.55;padding:34px 16px 90px;-webkit-text-stroke:.35px currentColor;
+body{font-family:var(--hand);background:var(--bg);color:var(--ink);line-height:1.55;padding:34px 16px 90px;-webkit-text-stroke:.2px currentColor;
 background-image:linear-gradient(#D8E2EE 1px,transparent 1px),linear-gradient(90deg,#D8E2EE 1px,transparent 1px);background-size:24px 24px}
 .wrap{max-width:1240px;margin:0 auto}
 .hd-box{border:1.6px solid var(--line);border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
@@ -36,7 +36,7 @@ border:2.2px solid var(--red);border-radius:50%/60% 55% 60% 55%;transform:rotate
 .pnode{width:214px;padding:9px 12px;cursor:pointer;text-align:left;background:#fff}
 .pnode .t{font-size:15.5px;font-weight:700}
 .pnode .id{color:var(--red);font-family:var(--mono);font-size:10px;margin-right:6px}
-.pnode .d{display:none;color:var(--dim);font-size:13px;margin-top:5px;border-top:1px dashed #c8cdd4;padding-top:5px}
+.pnode .d{display:none;color:#000;font-size:14px;margin-top:5px;border-top:1.5px solid #000;padding-top:5px}
 .pnode.open .d{display:block}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:10px 0 26px;align-items:start}
 .lane{padding:16px 14px 18px;background:var(--panel);position:relative;box-shadow:3px 4px 0 rgba(42,45,51,.08)}
@@ -50,11 +50,11 @@ border:2.2px solid var(--red);border-radius:50%/60% 55% 60% 55%;transform:rotate
 .fnode .id{font-family:var(--mono);font-size:10.5px;color:var(--red);flex:none}
 .fnode .head b{font-weight:700}
 .ai{font-size:10.5px;padding:0 7px;border:1.2px solid;border-radius:10px 3px 9px 4px/4px 9px 3px 10px;flex:none}
-.det{display:none;margin-top:7px;border-top:1.5px dashed #8aa0c0;padding-top:7px;font-size:13.5px}
+.det{display:none;margin-top:7px;border-top:1.5px solid #000;padding-top:7px;font-size:14px;color:#000}
 .fnode.open .det{display:block}
 .det .r{margin:4px 0;display:flex;gap:7px}
 .det .k{flex:none;font-size:11px;color:var(--red);border:1px solid var(--reddim);border-radius:8px 3px 7px 3px/3px 7px 3px 8px;padding:0 7px;height:fit-content;min-width:44px;text-align:center}
-.det .v{color:#111318}
+.det .v{color:#000}
 .det .v code{font-family:var(--mono);font-size:10.5px;background:#F0F3E8;padding:1px 5px;border-radius:4px;color:#1E6A45}
 .arrow{text-align:center;color:var(--ink);font-size:18px;line-height:1.1;margin:3px 0}
 .arrow.red{color:var(--red)}
