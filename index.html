@@ -4,240 +4,93 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>ADX FACTORY 全体系ツリー</title>
+<title>ADX FACTORY — 全体系フローチャート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Zen+Kurenaido&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FFFFFF;--panel:#FAFAF8;--ink:#1E2126;--sub:#6A7076;--line:#E4E2DC;--gold:#A8801E;
---phys:#8A2D3B;--atom:#1F3864;--gate:#B5432E;--why:#98A0A8;--sys:#5B6470;--mold:#7A5AC8;
---claude:#1F3864;--img2:#0B8A5C;--nano:#D97B10;--seed:#6D4FC4;--voice:#C24A6E;--council:#7A5AC8;--agent:#2E7DB5;
---num:"DIN Alternate","Helvetica Neue",sans-serif}
+:root{--bg:#141518;--ink:#E8E6E1;--dim:#9a978f;--line:#CFCCC4;--red:#E5615C;--reddim:#c9524e;--panel:#1B1D21;
+--cl:#7FA3D8;--i2:#5FBF95;--nb:#E0A050;--sd:#A88BE0;--vo:#D87F9E;--co:#B49BE8;--ag:#6FB6D8;--ceo:#E5615C;--sys:#8b929c;
+--hand:"Yusei Magic","Zen Kurenaido","Caveat",cursive;--mono:"SF Mono",Menlo,monospace}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:26px 14px 90px}
-.wrap{max-width:900px;margin:0 auto}
-h1{font-size:21px;font-weight:800}
-.sub{color:var(--sub);font-size:12.5px;margin:4px 0 10px}
-.fbnote{background:#FFF7E0;border:1.5px solid #E8CB77;border-radius:12px;padding:10px 14px;font-size:12px;margin-bottom:14px}
-.fbnote b{color:#7A5C0E}
-.toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.toolbar button{font-family:inherit;font-size:12px;font-weight:700;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 16px;cursor:pointer}
-.toolbar button:hover{border-color:var(--gold);color:var(--gold)}
-.legend{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px}
-.lg{font-size:10px;font-weight:800;color:#fff;border-radius:999px;padding:2.5px 10px}
-
-/* v5型: 常時表示グリッド */
-#tree{display:flex;flex-direction:column;gap:14px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;border-top:5px solid var(--gold);box-shadow:0 2px 10px rgba(30,33,38,.04)}
-.card>h2{font-size:14.5px;font-weight:800;text-align:center;display:flex;justify-content:center;gap:7px;align-items:center;flex-wrap:wrap}
-.card>.cmd0{display:block;text-align:center;font-size:10.5px;font-weight:700;color:var(--gold);margin:4px 0 10px}
-.card>.lead{font-size:11.5px;color:var(--sub);text-align:center;margin:2px 0 8px}
-.ph{font-size:12.5px;font-weight:800;display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:12px 0 4px}
-.ph .a{font-size:9px;font-weight:800;color:#fff;background:var(--atom);border-radius:999px;padding:1.5px 7px}
-.kids{list-style:none;margin:2px 0 0 7px;padding-left:12px;border-left:2px solid var(--line)}
-.kids>li{position:relative;padding:4px 0 4px 10px;font-size:11.8px}
-.kids>li:before{content:"";position:absolute;left:-12px;top:13px;width:16px;height:2px;background:var(--line)}
-.sub2{display:block;font-size:10px;color:var(--why);margin-top:1px}
-.sub2 b{color:var(--sub)}
-.mini{display:inline-block;font-size:8.5px;font-weight:800;border-radius:3px;padding:0 5px;margin-right:4px;color:#fff;vertical-align:1px}
-.m-dec{background:var(--gate)}.m-dod{background:var(--img2)}.m-ref{background:var(--gold)}
-.nid{font-family:var(--num);font-size:10px;font-weight:700;color:var(--gold);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:0 6px;flex:none}
-.ai{font-size:9px;font-weight:800;color:#fff;border-radius:4px;padding:1.5px 7px;flex:none}
-.a-cl{background:var(--claude)}.a-i2{background:var(--img2)}.a-nb{background:var(--nano)}.a-sd{background:var(--seed)}.a-vo{background:var(--voice)}.a-co{background:var(--council)}.a-ceo{background:var(--gate)}.a-ag{background:var(--agent)}.a-sys{background:var(--sys)}
-.gate-t{color:var(--gate);font-weight:800}
-.wide{border-top-color:#5B6470}
-.axbox{background:#FFF7E0;border:1.5px solid #E8CB77;border-radius:14px;padding:13px 16px}
-.axbox h2{font-size:13px;font-weight:800;color:#7A5C0E;text-align:left}
-.axbox .lead{text-align:left;color:#4A3E14;font-size:11.8px}
-.axbox .kids{border-left-color:#E8CB77}
-.hookli{background:#FFF7E0;border:1px solid #E8CB77;border-radius:8px;padding:4px 8px}
-.sheetbox{background:var(--panel);border:1px dashed var(--council);border-radius:8px;padding:5px 8px;font-size:10.8px;margin-top:3px}
-.sheetbox b{color:var(--council)}
-@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
-footer{color:var(--sub);font-size:10.5px;text-align:center;margin-top:30px}
+body{font-family:var(--hand);background:var(--bg);color:var(--ink);line-height:1.5;padding:34px 16px 90px}
+.wrap{max-width:1240px;margin:0 auto}
+.hd-box{border:1.6px solid var(--line);border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
+.hd-box2{border:1.6px solid var(--line);border-radius:15px 255px 15px 225px/225px 15px 255px 15px}
+h1{font-size:30px;font-weight:700;text-align:center;display:inline-block;padding:10px 44px;
+border:2.2px solid var(--red);border-radius:50%/60% 55% 60% 55%;transform:rotate(-.4deg);color:var(--ink)}
+.titlewrap{text-align:center;margin-bottom:8px}
+.sub{color:var(--red);font-size:15px;text-align:center;margin-bottom:4px}
+.sub2{color:var(--dim);font-size:13px;text-align:center;margin-bottom:18px}
+.fbnote{max-width:760px;margin:0 auto 22px;padding:10px 18px;color:var(--dim);font-size:13.5px;text-align:center;border:1.4px solid var(--reddim);border-radius:18px 4px 16px 6px/6px 14px 4px 18px}
+.fbnote b{color:var(--red)}
+.legend{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+.lg{font-size:12px;padding:2px 12px;border:1.3px solid;border-radius:14px 4px 12px 5px/5px 12px 4px 14px}
+.trunk{text-align:center;margin-bottom:8px}
+.root{display:inline-block;background:#0e0f11;border:1.8px solid var(--line);padding:14px 26px;font-size:16.5px;max-width:820px;transform:rotate(.2deg)}
+.root b{font-size:18px}
+.root p{color:var(--dim);font-size:13px;margin-top:4px}
+.varrow{color:var(--dim);font-size:20px;line-height:1;margin:6px 0}
+.layerlab{color:var(--red);font-size:14.5px;letter-spacing:.14em;margin:2px 0 12px}
+.strip{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:1200px;margin:0 auto}
+.pnode{width:214px;padding:9px 12px;cursor:pointer;text-align:left;background:var(--bg)}
+.pnode .t{font-size:14.5px;font-weight:700}
+.pnode .id{color:var(--red);font-family:var(--mono);font-size:10px;margin-right:6px}
+.pnode .d{display:none;color:var(--dim);font-size:12px;margin-top:5px;border-top:1px dashed #3a3d44;padding-top:5px}
+.pnode.open .d{display:block}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:10px 0 26px;align-items:start}
+.lane{padding:16px 14px 18px;background:var(--panel);position:relative}
+.lane>h2{font-size:19px;text-align:center;font-weight:700}
+.lane>h2 .lid{color:var(--red);font-family:var(--mono);font-size:13px;margin-right:8px}
+.lane>.cmd{display:block;text-align:center;color:var(--red);font-size:13.5px;margin:2px 0 14px}
+.lane>.cmd:before{content:"「"}.lane>.cmd:after{content:"」"}
+.fnode{background:var(--bg);padding:8px 11px;cursor:pointer;transition:border-color .15s}
+.fnode:hover{border-color:#fff}
+.fnode .head{font-size:13.8px;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.fnode .id{font-family:var(--mono);font-size:9.5px;color:var(--red);flex:none}
+.fnode .head b{font-weight:700}
+.ai{font-size:10.5px;padding:0 7px;border:1.2px solid;border-radius:10px 3px 9px 4px/4px 9px 3px 10px;flex:none}
+.det{display:none;margin-top:7px;border-top:1px dashed #3a3d44;padding-top:7px;font-size:12.3px}
+.fnode.open .det{display:block}
+.det .r{margin:4px 0;display:flex;gap:7px}
+.det .k{flex:none;font-size:10px;color:var(--red);border:1px solid var(--reddim);border-radius:8px 3px 7px 3px/3px 7px 3px 8px;padding:0 7px;height:fit-content;min-width:44px;text-align:center}
+.det .v{color:#cfccc4}
+.det .v code{font-family:var(--mono);font-size:10.5px;background:#0c0d0f;padding:1px 5px;border-radius:4px;color:#9fd8b8}
+.arrow{text-align:center;color:var(--dim);font-size:17px;line-height:1.1;margin:3px 0}
+.arrow.red{color:var(--red)}
+.gate{background:#1f1517;border:1.7px solid var(--red)}
+.gate .head b{color:var(--red)}
+.tagline{color:var(--red);font-size:17px;text-align:center;margin-top:34px}
+.hint{color:var(--dim);font-size:12px;text-align:center;margin-bottom:10px}
+footer{color:#5a5d63;font-size:11.5px;text-align:center;margin-top:26px;font-family:var(--mono)}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>🏭 ADX FACTORY 全体系ツリー</h1>
-<div class="sub">2026-07-17 制定 ／ 全工程を1枚で常時表示 ── 担当AI・決めること・完了定義・参照元まで</div>
-<div class="fbnote"><b>📸 FBの仕方：</b>変えたい箇所をスクショ→「<b>この箇所（ID）をこう変えたい</b>」の一言でOK。各行の金色チップ（例 <span class="nid">L2-D1</span>）がノードIDです。FBは正本md＋このツリー両方に反映され、同じFBが2回来たら恒久ルールに自動昇格します。</div>
-
-<div class="legend">
-<span class="lg" style="background:var(--claude)">Claude＝指揮・翻訳・組立・critic</span>
-<span class="lg" style="background:var(--council)">AI審議会＝Claude×Gemini/Codex</span>
-<span class="lg" style="background:var(--agent)">リサーチ/解剖エージェント</span>
-<span class="lg" style="background:var(--nano)">NanoBanana</span>
-<span class="lg" style="background:var(--img2)">Image2.0</span>
-<span class="lg" style="background:var(--seed)">Seedance</span>
-<span class="lg" style="background:var(--voice)">音声/HeyGen</span>
-<span class="lg" style="background:var(--sys)">システム自動</span>
-<span class="lg" style="background:var(--gate)">CEO</span>
+<div class="titlewrap"><h1>ADX FACTORY — 全体系フローチャート</h1></div>
+<div class="sub">( red: CEOゲート＝あなたが決める場所 / それ以外は自動 )</div>
+<div class="sub2">2026-07-17制定 ／ ノードをクリックすると詳細（決めること・完了定義・ツール・コスト・参照）が展開されます</div>
+<div class="fbnote">📸 <b>FBの仕方</b>：変えたい箇所をスクショ →「<b>このID をこう変えたい</b>」の一言でOK（各ノード左の赤い英数字がID）。正本md＋この図の両方に反映。同じFBが2回来たら恒久ルールに自動昇格。</div>
+<div class="legend" id="legend"></div>
+<div class="trunk">
+ <div class="root hd-box"><b>制作 ＝ 頭の中のイメージを、確率機械を経由して、他人の頭に再現する「通信」</b><p>すべての業務はこの通信路のノイズ除去である ── 下の全フローはこの1行から導出されている</p></div>
+ <div class="varrow">↓</div>
+ <div class="layerlab">─ 物理5法則（変えられない）＋ 6原子（対抗戦略）── クリックで詳細 ─</div>
+ <div class="strip" id="phys"></div>
+ <div class="varrow">↓</div>
+ <div class="strip" id="atoms" style="margin-top:8px"></div>
+ <div class="varrow">↓</div>
+ <div class="layerlab">─ 製造ライン（横3列）─</div>
 </div>
-<div id="tree"></div>
-<footer>正本群: production-lines / intake-and-briefing / element-assembly / lp-fv-axioms / factorization-L4-L6 / embellishment-library / design-brain SKILL / 型システム設計(Vault) ── ツリーと正本は常に同期更新</footer>
+<div class="hint">▼ 各カード内は上から下へ流れます。赤枠＝CEOの意思決定ポイント。クリックで展開</div>
+<div class="grid" id="row1"></div>
+<div class="grid" id="row2"></div>
+<div class="grid" id="row3"></div>
+<div class="grid" id="row4"></div>
+<div class="tagline">a factory is a decision queue in disguise.</div>
+<div class="sub2">決める場所（赤）以外は、全部こちらで回します。</div>
+<footer>source: github.com/k-yamada-engineer/adx-factory-tree ／ 正本: production-lines.md · intake-and-briefing.md · element-assembly.md · lp-fv-axioms.md · 型システム設計.md(Vault) · design-brain SKILL</footer>
 </div>
-<script>
-const AI={cl:["Claude","a-cl"],i2:["Image2.0","a-i2"],nb:["NanoBanana","a-nb"],sd:["Seedance","a-sd"],vo:["音声/HeyGen","a-vo"],co:["AI審議会","a-co"],ceo:["CEO","a-ceo"],ag:["エージェント","a-ag"],sys:["自動"," a-sys"]};
-// node: [id, title, [ai...], {w:やること,d:決めること,o:完了定義,r:参照,y:理由}, [kids], opts{gate,cmd,new,top}]
-const T=[
-["ROOT","第一原理 ── なぜこの形なのか",[],{w:"制作＝頭の中のイメージを、確率機械を経由して、他人の頭の中に再現する「通信」。すべての業務はこの通信路のノイズ除去である。"},[
- ["PHY","第0層：物理5法則（変えられない制約）",[],{y:"公理は解空間を狭める制約条件。優れたLPが似るのは収斂進化"},[
-  ["PHY-P1","P1 生成は確率的サンプリング",[],{w:"同じ指示でも毎回違う出力になる",y:"→多案・反復・判定(critic)・同一性制御が必然。§J初回多様性はこの帰結"}],
-  ["PHY-P2","P2 言語化は非可逆圧縮",[],{w:"「おしゃれ」と書いた瞬間に情報が死ぬ",y:"→参照画像・HEX・技法番号・数値仕様が必然。プール＝P2対抗装置"}],
-  ["PHY-P3","P3 モデルには事前分布の癖（＝AIっぽさの正体）",[],{w:"杖アイコン・淡色円バッジ・digital dust等、AIがやりがちな表現",y:"→否定形リストで名指し禁止して分布を削る"}],
-  ["PHY-P4","P4 人の注意は一度に1つ（中心窩2度・WM4±1）",[],{w:"高解像度で見えるのは視野2度・同時保持4±1チャンク",y:"→1画面1メッセージ・ジャンプ率・冒頭3秒フック・特徴3つ"}],
-  ["PHY-P5","P5 信頼は同一性と整合から",[],{w:"顔が変わる・物理が壊れる・コストゼロの主張＝信頼死",y:"→identity drift対策・※注釈アンカー・コストの高いシグナル（返金保証・実名顔出し）"}]
- ]],
- ["ATM","第1層：6原子（物理への対抗戦略）",[],{y:"全工程はこの6つの組合せ。工程の追加/削除は「どの原子が欠けて/重複しているか」で判定。意図の無い工程は削除してよい"},[
-  ["ATM-1","① 意図 ── 誰に何を感じさせ何をさせるか",[],{w:"送信内容そのもの。P0カルテと各ラインの企画フェーズが担う"}],
-  ["ATM-2","② 参照 ── 何に寄せるか（←P2対抗）",[],{w:"言語で伝わらない情報を画像・数値仕様で渡す。プール/catalog/Drive要素別フォルダが担う"}],
-  ["ATM-3","③ 構成 ── 時間・空間への情報配置（←P4最適化）",[],{w:"尺・カット・レイアウト・セクション順序。PASONA/AIDCA・タイムコード割付が担う"}],
-  ["ATM-4","④ 素材 ── 被写体の同一性（←P1・P5分散制御）",[],{w:"キャラ100%一致指定・1ステップ1変更・実在類似チェックが担う"}],
-  ["ATM-5","⑤ 指示言語 ── エンジンが解釈できる翻訳（←P2・P3対抗）",[],{w:"技法番号・7ブロック構文・否定形リスト・プロンプト翻訳が担う"}],
-  ["ATM-6","⑥ 判定 ── 意図とのdiff測定（←P1閉ループ）",[],{w:"critic pass/flag/fail・敵対レビュー・CEOゲートが担う。修正は差分のみ"}]
- ]]
-],{top:1}],
-
-["INF","蓄積インフラ ── 何を参照し、どう自浄するか",[],{w:"全ラインが毎回読む「脳」と、その品質を保つガバナンス"},[
- ["INF-1","参照資産（実測値）",[],{w:"プール15引き出し・168エントリ／文字強調技法113種／catalog現役39枚／マーケ施策26原則(M001-026・psychology-core親リンク付き)／Drive要素別12フォルダ／FB台帳68行",r:"design-brain/pool/・embellishment-library.md・catalog.json"}],
- ["INF-2","Drive要素別フォルダ（12種）",["sys"],{w:"CTA参考／比較表参考／実績・エンブレム参考／FV・バナー参考／文字組・文字加工参考／フォント参考／配色参考／レイアウト・図解参考／写真加工参考／区切り・あしらい参考／特典・オファー参考／マーケ施策参考",y:"要素を作る時に該当フォルダだけ開く＝即参照",o:"毎朝7:30の自動便が新規投入分を学習→自動分類済みであること"}],
- ["INF-3","critic規約",["cl"],{w:"pass/flag/failの3判定。flagのみ修正・再生成",d:"3反復で収束しなければ「参照を絞る」（増やすのは逆効果）",o:"全項目passで合格。失敗時は原因を4分類で記録：参照選定ミス／スペック曖昧／エンジン天井／transient(インフラ)——一過性障害を品質統計に混ぜない"}],
- ["INF-4","生成インフラ規約",["sys"],{w:"全画像生成はgen_image.py経由（520/502/503系は15→30→60s指数バックオフ・リトライ時は直列）。timeout=420標準・平常時並列2本まで",r:"design-brain/scripts/gen_image.py"}],
- ["INF-5","コスト階層 Tier S/A/B",["cl"],{w:"Tier S(FV・主CTA)=完全アセンブリ＋発散2-4案／Tier A(実績帯・比較表)=単一生成＋fail時のみ再生成／Tier B(区切り線・小アイコン)=新規生成せずcatalog再利用、純幾何装飾はCSS/SVG直組み可",d:"「この要素が悪いとCVに致命的か」でS/A/B判定",y:"アセンブリ工法の本質＝故障の局所化(1/8要素の失敗で残り7/8を捨てない)。全要素に発散適用だと最大16倍コストになるため"}],
- ["INF-6","自浄システム（死蔵・在庫・AB検証）",["sys"],{},[
-  ["INF-6a","在庫警報",[],{w:"catalog現役が60枚を超えたら報告→案件タイプ別の現役枠定員を協議",y:"現役増＝激選の意味が薄れる"}],
-  ["INF-6b","死蔵検知（経過案件数で正規化）",[],{w:"各エントリに登録時点の案件通番を記録。経過案件数が30を超えても引用0のものだけを死蔵候補として四半期棚卸し",y:"一律「直近20案件」は母数168に対し統計的に不当（順番未到来と区別できない）ため廃止"}],
-  ["INF-6c","効果検証AB 2トラック",[],{w:"トラック1(即時)=§J発散の1案をプール不使用コントロールにする／トラック2(縦断)=L1バナー全件でcritic一発合格率・反復回数をログし蓄積量の多寡と比較",o:"生成回数・総コスト・critic反復を案件毎に記録。20件貯まったら損益分岐点レポート化（現在0件＝未測定と明示）"}]
- ]],
- ["INF-7","公理集（LP/FV設計の科学的根拠）",[],{w:"中心窩2度・WM4±1・輝度コントラスト4.5:1・CTA=局所コントラスト・scent一致・ELM(高単価=中心ルート→証拠厚く)・シグナリング(コストの高い証拠のみ)・損失×効力感セット・Fogg B=MAP・ピークエンド・目標勾配",r:"lp-fv-axioms.md。堅い公理は非交渉、経験則数値(ジャンプ率3-4倍等)はABで検証"}],
- ["INF-8","型ライブラリ（Build-to-Stock・自己増殖）",["ceo","sys"],{y:"SaaS化の中核。受注生産→見込み生産への転換"},[
-  ["INF-8a","生産モデル",[],{w:"型が無ければその場でフル工場を回す(初回だけ重い・遅い・高い)→完成品は型として在庫化→型ライブラリが利用と共に自己増殖",d:"工場の軸=ミスの損失の大きさ／SaaSの軸=ユーザーが自分で判断したいか——2軸は独立"}],
-  ["INF-8b","型化の基準（生成≠認定）",["ceo"],{d:"「生成された」と「型として認定された」は別工程。CEOゲートが初回は必ず承認（将来は敵対レビュー通過→AI審議会へ委譲余地）",y:"質の低い型のライブラリ汚染防止",o:"CEO承認済みの型のみライブラリ格納"}],
-  ["INF-8c","固有情報の変数化（必須）",["cl"],{w:"型格納前にロゴ・社名・実績数値・顔写真をプレースホルダー化する専用工程",y:"飛ばすと型ライブラリ＝営業秘密の塊になる",o:"固有名詞・実データがゼロであること"}],
-  ["INF-8d","初回UX：仮返し→差し替え",["sys"],{w:"新規業種はタクソノミー2段階フォールバック（小項目一致→同一大項目内の最近傍型）で仮の結果を即返し→裏でフル工場生成→完成後に差し替え通知"}],
-  ["INF-8e","業種タクソノミー",[],{w:"大項目25×小項目150〜200＝型の最小単位。自社実績の位置: 給付金・士業相談/債務整理・不動産・求人転職・外壁塗装・美容サロン（いずれも自社/既存クライアント実績あり）",r:"Vault: 2026-07-17_ADX_型システム設計.md"}],
-  ["INF-8f","優先20型（初版・proxy選定）",[],{w:"Tier1実績あり8型(給付金/士業/債務整理/外壁塗装/美容サロン/BtoB/求人転職/リフォーム)＋Tier2需要濃×pool厚8型(サプリ2/スキンケア/ヘアケア/医療脱毛/AGA/痩身/ホワイトニング)＋Tier3高単価無形4型(投資講座/資格/宅食/ジム)",o:"※出稿社数の実測で差し替え予定のproxy版。Tier2=薬機法・投資=金商法フィルタ同梱必須"}],
-  ["INF-8g","型の鮮度管理（将来TODO）",[],{w:"最終更新からの経過・最新敵対レビュー基準での再検証有無を管理",y:"景表法運用・デザイントレンドで型は静かに劣化する"}]
- ]],
- ["INF-9","品質保証の階層（敵対レビュー配置）",[],{w:"自己critic(Claude単独)は構造的弱点＝作る者と判定する者が同一。配置: L2=視覚＋コピー(scent一致・Conviction厚さの第三者判定)で敵対レビュー必須／L4=企画(審議会)＋生成後判定／L1・L3・L5・L6=自己critic＋CEO高速FBで代替（低コスト・即リテイクのため敵対レビューのコスト非対応）",r:"design-brain SKILL §Q"}]
-],{top:1}],
-
-["P0","P0 受付・事業カルテ ── 全ラインの入口",["ceo","cl","ag"],{w:"カルテなしに製造しない",y:"意図のノイズは下流の全工程で増幅されるため、最上流に最もコストをかける"},[
- ["P0-A","A 受付6点セット",["ceo"],{w:"①自社HP/LP(なければベンチマーク企業) ②検索KW2〜5 ③画像素材(ロゴ・代表・お客様・プロダクト) ④参考LP/HP ⑤参考バナー ⑥備考",d:"不足があれば制作前に依頼（Claudeが不足チェック）。参考④⑤はL0学習にも同時投入",o:"6点が揃っている、または不足の合意が取れている"}],
- ["P0-B","B 共通前処理（事業ごとに1回）",["cl","ag"],{},[
-  ["P0-B1","①商材理解",["cl"],{w:"何を・いくらで・誰に・どう届けるか",o:"1文で説明できる状態"}],
-  ["P0-B2","②業界理解",["cl"],{w:"商流・規制・繁忙期・業界用語",o:"規制リスト（薬機法/景表法/金商法等の該当）が明記されている"}],
-  ["P0-B3","③3C分析＋5Forces",["ag"],{w:"KW Volの実測・競合のPR Times・Yahoo知恵袋の生声で裏付け",o:"Volが実数で入っている（推定レンジは不合格＝実測必須ルール）",r:"desk-research / search-demand-mapping"}],
-  ["P0-B4","④ペルソナ＝N1確定",["cl"],{w:"1人に絞る。脳内セリフ・制御焦点(促進/防止)まで",o:"N1の脳内セリフが書けている",r:"psychology-core"}],
-  ["P0-B5","⑤カスタマージャーニー確定",["cl"],{w:"認知→比較→検討→契約→入金まで。各段階の顧客の状態/感情/接点/障壁/次へ進む引き金",o:"AIが迷わない粒度＝任意の制作物のジャーニー位置が即答できる"}],
-  ["P0-B6","⑥想定広告媒体確定",["cl"],{w:"ジャーニー段階×媒体の対応表まで作る",o:"対応表が存在する"}]
- ]],
- ["P0-C","C カルテ保存・毎回参照",["cl","ceo"],{w:"00_事業カルテ.mdに保存→以後その事業の全制作は最初にカルテを読む",d:"CEO/ユーザーは出力依頼時に使う媒体を指定（例:Meta広告の動画）→ジャーニー位置から訴求決定",y:"媒体×クリエイティブの型: 動画広告=UGC感／リスティング=顕在直答／看板=1メッセージそのまま／自社SNS=具体性・UGC感",o:"カルテが存在し、制作物に「参照したカルテ項目」が記録されている"}]
-],{top:1,cmd:"新規案件が来たら必ず最初に"}],
-
-["L0","L0 学習ライン ── 常時稼働・自己増殖",["ceo","ag","cl","sys"],{},[
- ["L0-A","A 投入",["ceo"],{w:"チャット直貼り or Drive「デザイン参考」フォルダに放り込むだけ（指示不要）",y:"毎朝7:30の自動便が巡回。「学習して」は明示トリガー"}],
- ["L0-B","B 解剖・3分類仕分け",["ag","cl"],{w:"並列エージェントが目視解剖→①スタイル参照(画像現役) ②デザイン原則(言語化して画像引退) ③マーケ施策(エンジンに渡さない言語知識)。実物LPは①+③二重登録",d:"タイブレーク一問:「この情報は生成エンジンのプロンプトに入って画質を上げるか？」Yes=①②／No=③",o:"全ファイルに分類が付き、数値必須(HEX・ジャンプ率・配置)で解剖されている"}],
- ["L0-C","C 焼付け・自動分類",["cl","sys"],{w:"プール格納・技法番号化(現在113)・同じくせ2回で定番昇格。③はpsychology-core親リンク付きでmarketing-principlesへ（0親は押し込まず保管＝3-5件でstructural-principles新設検討）。Drive上は12要素別フォルダへ自動移動",o:"pool-index更新済み＋Drive分類済み＋processed-ids記録済み"}],
- ["L0-D","D 📚学習レポート",["cl"],{w:"分類／学んだくせ／新技法／次から変わること／プール状況の定型で報告",o:"CEOが「何が変わるか」を1行で把握できる"}]
-],{top:1,cmd:"貼るだけ／Driveに入れるだけ"}],
-
-["ASM","横断原則：要素単位生成・アセンブリ工法（L1・L2に適用）",[],{w:"Image2.0でFV/LPを一発生成しない。素因子に分解→各素因子を専用プロンプト＋要素別参考で個別生成→Claude Codeが組立",y:"一発生成は全素因子にP1(確率ブレ)とP3(AIっぽさ)が同時に乗り品質が平均化して落ちる。本質的効能=故障の局所化",d:"見せる文字(キャッチ・CTA文言・バッジ)=エンジン産のみ・HTML素打ち禁止／読む文字(FAQ回答・長文本文)=HTML(速度/SEO/可読性)",r:"element-assembly.md"},[],{top:1}],
-
-["L1","L1 バナー単体",["cl","i2","nb","ceo"],{},[
- ["L1-A","A 意図確定",["cl"],{w:"カルテ読込→媒体・ジャーニー位置特定→訴求決定",d:"使う媒体（未指定なら確認してから作る）",o:"訴求軸とジャーニー位置が1行で言える"}],
- ["L1-B","B 素因子分解",["cl"],{w:"メインビジュアル／キャッチコピー／サブコピー／権威バッジ(SP2つまで)／CTA一式(帯・食い込みバッジ込み)／マイクロコピー／オファー表示／緊急性リボン に分解しTier S/A/B判定",o:"全要素にTierが付いている"}],
- ["L1-C","C 要素別生成",["cl","i2","nb"],{w:"要素ごとにDrive該当フォルダ＋pool激選2件→技法番号＋処方(CTA4点セット等)注入プロンプト→生成。Tier Sは構図×トンマナ2軸で複数案(§J・同プロンプト連打禁止)",o:"各要素がcritic pass（文字正確性・技法適用・AIっぽさ3禁止・景表法）",r:"CTA参考フォルダ／embellishment-library"}],
- ["L1-D","D 組立",["cl"],{w:"合格要素をパレットHEX・光源方向統一で合成",o:"要素間のトンマナ不整合ゼロ"}],
- ["L1-E","E 判定・FB",["ceo","cl"],{w:"CEO一言FB。部分FBはその要素だけ再生成orインペイント（全体作り直し禁止）",o:"CEO「正解」or 採用。fb-logに記録",y:"全体re-genはゲシュタルトを壊す(§M)"}]
-],{top:1,cmd:"「◯◯のバナー作って」＋使う媒体"}],
-
-["L2","L2 LP一気通貫",["cl","ag","i2","nb","ceo"],{},[
- ["L2-A","A 解剖・リサーチ",["cl","ag"],{w:"カルテ読込＋参考LPをlp_anatomize/Figma RESTで実測解剖（フォント・色・構造の実数値）。不足リサーチをエージェントが追補",o:"参考の実測トークンが取れている"}],
- ["L2-B","B コピー執筆",["cl"],{w:"writing×psychology-core（使用原則ID付き）。公理適用: scent一致(広告↔FV)・高単価はELM中心ルート→証拠セクション厚く・PASONA/AIDCA順序・冒頭3秒フック",o:"原則ID付き設計根拠ブロックがある＋FVが3秒テストを通る想定",r:"lp-fv-axioms.md／writing"}],
- ["L2-C","C 方向カンプ（発散）",["i2","ceo"],{w:"全体カンプ2〜4案（構図×トンマナ2軸・方向確認用でありトレース元ではない）",d:"CEOが方向を選ぶ（A/Bの一言）——通過まで実装しない",o:"CEOの選択が出ている"},[],{gate:1}],
- ["L2-D","D 素因子分解＋要素別生成",["cl","i2","nb"],{w:"FV各パーツ＋Body各セクション（CTAブロック/比較表/実績数字帯/お客様の声/エンブレム/ステップ図/料金カード/区切りあしらい）に分解→選択方向のトンマナで各要素を個別生成",o:"全要素critic pass。比較表は自社列浮かせ＋直後に感情の締め文等、プール処方が適用されている",r:"要素別フォルダ12種／ui-patterns(Body15-20セクション基準)"}],
- ["L2-E","E 組立・実装",["cl"],{w:"見せる文字=エンジン産要素を配置のみ／読む文字=HTML。スクロールモーション(cubic-bezier(.4,0,.2,1)・linear禁止)・カウントアップ・レスポンシブ実装",o:"意匠判断ゼロ（全ビジュアルがカンプ/要素のトレースで説明可能）＋LCP2.5秒以内",r:"improve-animations／ui-patterns"}],
- ["L2-F","F 判定・公開",["cl","ag","ceo"],{w:"公理チェック(輝度4.5:1・CTA局所コントラスト・フォーム項目≤8)→敵対的レビュー(Fable×Codex)を視覚＋コピー(scent一致・Conviction層の厚さ)両方に→公開→FBモード(LP上タップFB)",o:"敵対レビューの致命傷ゼロ＋CEO公開承認",r:"codex-cross-check"},[],{gate:1}]
-],{top:1,cmd:"「◯◯のLP作って」＋参考URL"}],
-
-["L3","L3 動くFV（シネマグラフ）",["nb","i2","sd","cl"],{},[
- ["L3-A","A 素材",["nb"],{w:"素材画を生成(¥20)",o:"素材がFVカンプのトンマナと一致"}],
- ["L3-B","B 文字入りバナー化",["i2"],{w:"横16:9＋縦9:16を別生成。edits APIで素材の同一性維持",o:"日本語文字ノーミス"}],
- ["L3-C","C 動画化",["sd"],{w:"文字固定シネマグラフ1080p（locked screen-space graphic layer指定・Higgsfield CLI）",o:"文字が1pxも動かず背景/人物だけ動く",y:"エンジン比較済: 同一性94%vs85%・全身物理でSeedance優位→継続採用"}],
- ["L3-D","D 実装",["cl","ceo"],{w:"poster＋動画で実装。crf20以下・GIF禁止・本番はファイル配信",o:"画質の掟全pass＋CEO FB",y:"Body側は動画なし＝静止画×スクロールアニメが確定型"},[],{gate:1}]
-],{top:1,cmd:"「FV動かして」"}],
-
-["L4","L4 マルチショットCM動画",["co","cl","nb","i2","sd","ceo"],{},[
- ["L4-A","A 企画＝最上流で全部決める",["co","ceo"],{w:"AI審議会（Claude起案→Gemini/Codexが批評・代案→統合）で企画決定シートを作成",d:"決定シート8項目: ①シーン ②必要な人物 ③人物の印象 ④場所 ⑤切り取る瞬間 ⑥トーン(色・光・温度) ⑦1メッセージ ⑧感情曲線。最初の3秒＝フック最重要——弱ければ差し戻し",o:"シート8項目が全部埋まりCEO承認済み",y:"1つのAIの思い込みを討議で潰す(P1・P3)。企画のノイズは下流全工程で増幅される"},[],{gate:1}],
- ["L4-B","B 構成",["cl"],{w:"尺→カット数分解(15s≈8-11・1カット1-2秒)。最強カットを冒頭3秒に。各カットに役割1つ(フック/状況/感情/変化/証拠/CTA)。タイムコード＋Hard cut。カメラ言語ショット別(手持ち/FPV/ダッチ・NEVER static)。音設計",o:"役割のないカットがゼロ"}],
- ["L4-C","C 素材",["nb","i2","cl"],{w:"キャラ=matches input 100%指定／場所=STYLE REFERENCE ONLY指定で生成→権利・実在類似チェック",o:"同一性・権利クリア"}],
- ["L4-D","D 発注",["cl","sd"],{w:"7ブロック構文へ翻訳（Style宣言60:30:10/SUBJECT/PRACTICAL VFX/LOCATION/ACTION/CAMERA/CONSTRAINTS）＋否定形リスト(no game engine/NOT digital dust/NO slow-motion)→Seedance 1080p一発マルチショット",o:"構文7ブロックが全部ある",r:"motion-3d.md(Higgsfield構文)"}],
- ["L4-E","E 判定",["cl","co","ceo"],{w:"critic(物理・連続性identity drift・文字・感情の一貫性・画質)→flagのみ再生成→生成後判定にも審議会(CM redoは高コストのため)→crf20納品",o:"3反復以内全pass＋CEO FB",r:""},[],{gate:1}]
-],{top:1,cmd:"「CM風の動画作って」"}],
-
-["L5","L5 AIアバター動画（話す案内）",["co","cl","i2","vo","ceo"],{},[
- ["L5-A","A 企画",["co","ceo"],{w:"誰が話すと信頼最大か（権威A3か親近A2か）・人物の印象・トーンを審議会で決定",o:"CEO承認",d:"視聴文脈(LP埋込/サイネージ/LINE)→尺・字幕要否"},[],{gate:1}],
- ["L5-B","B 台本",["cl"],{w:"冒頭3秒フック→要点3つ以内→CTA(1文40字)。話し言葉化: 難読漢字→ひらがな・1文短く・「えー、」の間・句読点=リズム設計",o:"音読して不自然ゼロ",r:"cognitive-rhythm-writing"}],
- ["L5-C","C 人物画像",["i2","cl"],{w:"正面・顔面積大・口元露出・バストショット〜ショルダー・肉眼質感・「可愛すぎない一般スタッフ感」",o:"リップシンク適性critic pass＋実在類似なし",y:"引きの画は同期精度が落ちる物理条件"}],
- ["L5-D","D 音声",["vo","cl"],{w:"ElevenLabs(高品質・感情タグ・クローン)orVOICEVOX(無料・キャラ声規約確認)→試聴→句読点調整→再生成ループ",o:"聞いて違和感ゼロ（ここが品質の8割）"}],
- ["L5-E","E 合成・判定",["vo","cl","ceo"],{w:"HeyGen Avatar IVでリップシンク→critic(口の同期・まばたき・背景破綻)→字幕・圧縮→納品",o:"CEO FB"},[],{gate:1}]
-],{top:1,cmd:"「話す案内動画作って」"}],
-
-["L6","L6 建築パース",["co","nb","cl","sd","ceo"],{},[
- ["L6-A","A 企画",["co","ceo"],{w:"「見せる暮らし」を審議会で決定: シーン・住む人物像・時間帯(夕景=情緒)・トーン",y:"家具でなく「この部屋での自分の生活」を見せる=保有効果の先取り",o:"CEO方向承認"},[],{gate:1}],
- ["L6-B","B 生成",["nb","cl"],{w:"連続editチェーン: ①空室補正→②家具ステージング→③夕景ライティング→④アイソメ断面（1ステップ1変更=同一性維持）",o:"各ステップで窓・建具・寸法の同一性critic pass（構造を変えない=虚偽表示リスク）"}],
- ["L6-C","C 法務・納品",["cl","sd","ceo"],{w:"「家具・内装はイメージです」注記必須→動画化は任意でL3接続→納品",o:"注記あり＋CEO FB"},[],{gate:1}]
-],{top:1,cmd:"「パース作って」＋部屋写真"}],
-
-["FB","FBの回し方 ── このツリー自体の更新ルール",["ceo","cl"],{},[
- ["FB-1","FBの入口",["ceo"],{w:"①このツリーの該当ノードを開いてスクショ＋「この箇所(ID)をこう変えたい」 ②制作物への一言FB(「なんか違う」でOK) ③参考を貼るだけ(自動学習)",y:"FBは雑・一言でよい。構造化はAI側の仕事"}],
- ["FB-2","AIの処理",["cl"],{w:"4点推定(事実/基準/範囲/格納先)→本質的な質問だけタップ形式で→復唱1行→即修正実行",d:"範囲不明時のデフォルト=その案件限定。同一趣旨のFBが2回来たら自動で恒久ルールに昇格",o:"正本md＋ツリー両方に反映されている",r:"FBプロトコル(CLAUDE.md)／fb-log.md(全件台帳)"}],
- ["FB-3","上書きショートハンド",["ceo"],{w:"「永続」=全案件昇格／「今回だけ」=保存取消／「逆・違う○○」=訂正して再実行／「正解」=確定パターン保存"}]
-],{top:1}]
-];
-function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
-function aiTags(ais){return (ais||[]).map(a=>{const[l,c]=AI[a];return `<span class="ai ${c.trim()}">${l}</span>`}).join("")}
-function fields(b){let s="";
- if(b.d)s+=`<span class="sub2"><span class="mini m-dec">決</span>${b.d}</span>`;
- if(b.o)s+=`<span class="sub2"><span class="mini m-dod">完了</span>${b.o}</span>`;
- if(b.r)s+=`<span class="sub2"><span class="mini m-ref">参照</span>${b.r}</span>`;
- if(b.y)s+=`<span class="sub2">${b.y}</span>`;
- return s}
-function leaf(n){const[id,t,ais=[],b={},kids=[],opt={}]=n;
- const gate=(opt.gate||/ゲート|承認/.test((b.d||"")+(b.o||"")))?"":"";
- let inner=`${aiTags(ais)}<b>${esc(t)}</b>`;
- if(b.w)inner+=` ${esc(b.w)}`;
- let s=`<li class="${opt.hook?"hookli":""}"><span class="nid">${id}</span> ${inner}${fields(b)}`;
- if(kids&&kids.length)s+=`<ul class="kids">${kids.map(leaf).join("")}</ul>`;
- return s+"</li>"}
-function phase(n){const[id,t,ais=[],b={},kids=[],opt={}]=n;
- let s=`<div class="ph"><span class="nid">${id}</span>${esc(t)}${aiTags(ais)}${opt.gate?'<span class="gate-t">←ゲート</span>':""}</div>`;
- const bd=[];
- if(b.w)bd.push(`<li><span class="nid" style="visibility:hidden">.</span>${esc(b.w)}${fields(b)}</li>`);
- if(kids&&kids.length)s+=`<ul class="kids">${kids.map(leaf).join("")}</ul>`;
- else if(b.w||b.d||b.o||b.r||b.y)s+=`<ul class="kids"><li>${b.w?esc(b.w):""}${fields(b)}</li></ul>`;
- return s}
-function card(n,cls){const[id,t,ais=[],b={},kids=[],opt={}]=n;
- let s=`<div class="card ${cls||""}"><h2><span class="nid">${id}</span>${esc(t)}${aiTags(ais)}</h2>`;
- if(opt.cmd)s+=`<span class="cmd0">「${opt.cmd}」</span>`;
- if(b.w)s+=`<div class="lead">${esc(b.w)}</div>`;
- if(b.y)s+=`<div class="lead">${esc(b.y)}</div>`;
- s+=(kids||[]).map(phase).join("");
- return s+"</div>"}
-function build(){
- const M=Object.fromEntries(T.map(n=>[n[0],n]));
- let out="";
- out+=card(M.ROOT);
- out+=card(M.INF,"wide");
- out+=`<div class="grid2">${card(M.P0)}${card(M.L0)}</div>`;
- const asm=M.ASM;out+=`<div class="axbox card" style="border-top:0"><h2><span class="nid">ASM</span>${esc(asm[1])}</h2><div class="lead">${esc(asm[3].w||"")}</div><div class="lead"><b>決:</b> ${esc(asm[3].d||"")} ／ <b>なぜ:</b> ${esc(asm[3].y||"")}</div></div>`;
- out+=`<div class="grid3">${card(M.L1)}${card(M.L2)}${card(M.L3)}</div>`;
- out+=`<div class="grid3">${card(M.L4)}${card(M.L5)}${card(M.L6)}</div>`;
- out+=card(M.FB);
- document.getElementById("tree").innerHTML=out;
-}
-build();
-</script>
+<script src="data.js"></script>
 </body>
 </html>
