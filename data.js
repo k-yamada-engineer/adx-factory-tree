@@ -4,6 +4,10 @@ document.getElementById("legend").innerHTML=LEG.map(([k,t])=>`<span class="lg" s
 
 const SKILLS={
  "adx-design":["制作の正解DB・工程・掟(三権分立/critic/部分修正)。全ラインの親スキル","全ライン共通"],
+ "creative-direction":["生成前CDブリーフ必須(実写デフォルト/トンマナ/参考枚数記録)＋製造ドクトリン正本","ASM全体・L1-B・L2-B"],
+ "copy-transform":["説明文→コピー変換3ゲート(禁止ワード/技法15案/棄却ルーブリック)","L1-C・L2-C 全H1/見出し"],
+ "image-prompt-director":["実写の写真設計図(9観点・英語連結・のっぺり対策)","実写生成全般"],
+ "youtube-comment-mining":["YTコメント欄の生声自動収集・分類(insight/Schwartz/N1候補)","P0-B3"],
  "design-brain":["参考学習・プール激選・技法辞書・catalog・critic基準","L0全体・L1-C・L2-C/D・INF全体"],
  "psychology-core":["心理67原則。N1設計・コピー・訴求根拠","P0-B4・L2-B・L5-B"],
  "writing":["LP文・広告コピー・LINE配信文の執筆","L2-B"],
@@ -37,7 +41,7 @@ const LANES={
 P0:{title:"P0 受付・事業カルテ",cmd:"新規案件はまずここ（カルテなしに製造しない）",nodes:[
  {id:"P0-A",t:"受付6点セット",ai:["ceo"],g:1,det:{w:"①自社HP/LP(なければベンチマーク) ②検索KW2〜5 ③画像素材(ロゴ/代表/お客様/商品) ④参考LP/HP ⑤参考バナー ⑥備考",d:"6点を渡す（不足はClaudeが制作前に依頼）",o:"6点が揃う or 不足の合意",y:"参考④⑤はL0学習にも同時投入される"}},
  {id:"P0-B1",t:"商材・業界理解",ai:["cl"],det:{w:"何を・いくらで・誰に・どう届けるか＋商流・規制・繁忙期・業界用語",o:"1文で説明できる＋規制リスト(薬機法/景表法/金商法)明記",skl:["first-principles"]}},
- {id:"P0-B3",t:"3C＋5Forces 実測リサーチ（8サブスキル武器庫）",ai:["ag"],det:{w:"①regulation-check(消費者庁・特商法処分DB→NG訴求) ②competitor-financial-intel(法人番号→EDINET/gBizINFO→競合財務) ③crowdfunding-pricing-intel(CAMPFIRE/Makuake→価格受容性実数) ④stat-market-sizing(e-Stat/矢野経済→市場規模) ⑤pr-times-scan(RSS→競合動向時系列) ⑥review-mining(知恵袋/小町→生声) ⑦ad-library-scan(Google透明性/Meta→競合CR・要ブラウザ) ⑧kanpo-check(官報90日窓)",d:"KW VolはCEO実測（3段バトン: Claudeがサジェスト+枠→CEOがプランナー/ラッコ有料で実数→再開）。AI推定=不合格",o:"Excelテンプレ13シートが実数4点セット(値+単位/一次URL/取得日/推定フラグ)で埋まる。空欄禁止=N/A理由コード",tool:"EDINET/e-Stat/gBizINFO/法人番号API(キー申請中)・PR TIMES RSS・TDnet非公式",ref:"research-arsenal.md(正本)・_TEMPLATE_MARKETING_STRATEGY_FRAMEWORK_v3.xlsx",skl:["desk-research","search-demand-mapping"],y:"マーケは必ず実数ベース。生声と一次ソースだけが証拠"}},
+ {id:"P0-B3",t:"3C＋5Forces 実測リサーチ（8サブスキル武器庫）",ai:["ag"],det:{w:"①regulation-check(消費者庁・特商法処分DB→NG訴求) ②competitor-financial-intel(法人番号→EDINET/gBizINFO→競合財務) ③crowdfunding-pricing-intel(CAMPFIRE/Makuake→価格受容性実数) ④stat-market-sizing(e-Stat/矢野経済→市場規模) ⑤pr-times-scan(RSS→競合動向時系列) ⑥review-mining(知恵袋/小町→生声) ⑦ad-library-scan(Google透明性/Meta→競合CR・要ブラウザ) ⑧kanpo-check(官報90日窓)",d:"KW VolはCEO実測（3段バトン: Claudeがサジェスト+枠→CEOがプランナー/ラッコ有料で実数→再開）。AI推定=不合格",o:"Excelテンプレ13シートが実数4点セット(値+単位/一次URL/取得日/推定フラグ)で埋まる。空欄禁止=N/A理由コード",tool:"EDINET/e-Stat/gBizINFO/法人番号API(キー申請中)・PR TIMES RSS・TDnet非公式",ref:"research-arsenal.md(正本)・_TEMPLATE_MARKETING_STRATEGY_FRAMEWORK_v3.xlsx",skl:["desk-research","search-demand-mapping","youtube-comment-mining"],y:"マーケは必ず実数ベース。生声と一次ソースだけが証拠"}},
  {id:"P0-B3k",t:"KW Vol実測",ai:["ceo"],g:1,det:{d:"Claudeが用意したKWリストにキーワードプランナー/ラッコ有料で実数を記入",o:"全KWにVol実数+取得日。90日で再実測",y:"Vol実数は有料ツールでしか取れない=人間ゲートの中核"}},
  {id:"P0-B4",t:"N1確定 → ジャーニー → 媒体対応表",ai:["cl"],det:{w:"ペルソナを1人に絞り脳内セリフまで→認知→比較→契約→入金の全段階(状態/感情/接点/障壁/引き金)→段階×媒体の対応表",o:"任意の制作物のジャーニー位置が即答できる粒度",skl:["psychology-core"]}},
  {id:"P0-C",t:"カルテ保存＋業種型ツリー生成",ai:["cl","sys"],det:{w:"00_事業カルテ.mdに保存＋Vault 50_型ライブラリ/{業種}_型ツリー.md を必ず同時生成(6章構成・固有情報は{変数}化)",o:"以後の全制作が最初にカルテを読む状態",ref:"50_型ライブラリ/_TEMPLATE_業種型ツリー.md",skl:["vault-ops"],y:"蓄積=資産。型はCEO承認で正式認定"}},
@@ -51,32 +55,33 @@ L0:{title:"L0 学習ライン（常時稼働）",cmd:"貼るだけ／Drive「デ
 ]},
 INF:{title:"INF 蓄積インフラ＝工場の脳",cmd:"全ラインが毎回ここを読む",nodes:[
  {id:"INF-1",t:"参照資産（実測値）",ai:["sys"],det:{w:"プール15引き出し168エントリ／技法113種／catalog現役39枚／マーケ施策26原則／Drive12フォルダ／FB台帳68行",ref:"design-brain/pool/ ・ embellishment-library.md ・ catalog.json"}},
+ {id:"INF-2",t:"業種別参考ライブラリ（品質の決定変数）",ai:["ceo","sys"],g:1,det:{w:"Drive 業種別参考/20業種フォルダ。品質=参考の保有数×業種マッチ率。投入ルート: ①CEOがURL/画像を貼る(自動格納) ②DPROエクスポート→消化額上位LPのFVを自動スクショ収集(勝ちの実証付き) ③案件の勝ち生成物を還流",d:"該当業種3枚未満なら制作前に投入依頼",o:"実測: DPRO初回収集58本格納済み",y:"2026-07-20確定: 参考ライブラリが品質の上限を決める"}},
  {id:"INF-3",t:"critic規約",ai:["cl"],det:{w:"pass/flag/failの3判定・flagのみ再生成",d:"3反復で収束しなければ参照を絞る（増やすのは逆効果）",o:"失敗は4分類記録: 参照選定ミス/スペック曖昧/エンジン天井/transient——インフラの天気を品質統計に混ぜない"}},
  {id:"INF-5",t:"コスト階層 Tier S/A/B",ai:["cl"],det:{w:"S(FV・主CTA)=完全アセンブリ+発散2-4案／A(実績帯・比較表)=単一生成+fail時のみ再／B(区切り・小物)=catalog再利用かCSS/SVG直組み",d:"「この要素が悪いとCVに致命的か」でTier判定",y:"アセンブリの本質=故障の局所化。全要素発散だと最大16倍コスト"}},
  {id:"INF-6",t:"自浄システム",ai:["sys"],det:{w:"在庫警報(catalog60枚超)／死蔵検知(登録からの経過案件数30超で引用0のみ)／AB2トラック(発散1案をプール不使用コントロール+縦断ログ)",o:"生成回数・コスト・反復を全件ログ→20件で損益分岐点レポート(現在0件=未測定)"}},
  {id:"INF-8",t:"型ライブラリ（Build-to-Stock・自己増殖）",ai:["ceo","sys"],g:1,det:{w:"型が無ければフル工場→完成品を{変数}化して型として在庫→自己増殖。新規業種はタクソノミー近傍型で仮返し→裏でフル生成→差し替え通知",d:"型認定=CEO初回必須承認（生成≠認定）",ref:"業種タクソノミー大25×小150-200・優先20型・50_型ライブラリ/（業種型ツリーmd）",y:"ユーザーが買うのは「型と勝ちパターンからの高速カスタマイズ」"}},
  {id:"INF-9",t:"品質保証の階層",ai:["ag"],det:{w:"敵対レビュー(Fable×Codex)の配置: L2=視覚+コピー必須／L4=企画+生成後／L1・L3・L5・L6=自己critic+CEO高速FBで代替",y:"自己criticは作る者と判定者が同一という構造的弱点への対策"}}
 ]},
-ASM:{title:"ASM 横断原則: 要素単位アセンブリ",cmd:"L1・L2の作り方の憲法",nodes:[
- {id:"ASM-1",t:"一発生成の禁止",ai:["cl"],det:{w:"Image2.0でFV/LPを一発生成しない",skl:["adx-design"],y:"一発生成は全素因子にP1(確率ブレ)とP3(AIっぽさ)が同時に乗り品質が平均化して落ちる"}},
- {id:"ASM-2",t:"素因子ごとに個別生成",ai:["i2","nb"],det:{w:"意図確定→素因子分解→要素別フォルダ参考激選→要素ごとに専用プロンプトで生成→要素critic",skl:["design-brain"],y:"本質的効能=故障の局所化（1/8要素の失敗で残り7/8を捨てない）"}},
- {id:"ASM-3",t:"文字の憲法",ai:["cl"],det:{w:"見せる文字(キャッチ・CTA文言・バッジ)=エンジン産のみ・HTML素打ち禁止／読む文字(FAQ回答・長文)=HTML",y:"速度・SEO・可読性の担保"}},
- {id:"ASM-4",t:"Claudeは組立とモーションのみ",ai:["cl"],det:{w:"パレットHEX統一・光源方向統一で合成、スクロールモーション実装。意匠を1pxも足さない（三権分立§K）",o:"全ビジュアルが要素/カンプのトレースで説明可能"}}
+ASM:{title:"ASM 製造ドクトリン: 模倣ファースト1枚絵",cmd:"2026-07-20確定。全制作物(キャラ/バナー/FV/LP Body)の憲法",nodes:[
+ {id:"ASM-1",t:"参考マスト（ゼロベース禁止）",ai:["cl"],det:{w:"マスター参考1〜2枚を確保してから制作開始。無ければCEOに投入依頼 or 近接業種で代替提案",ref:"Drive 業種別参考/20フォルダ",skl:["creative-direction"],y:"品質=参考の保有数×業種マッチ率。参考ライブラリが事業資産そのもの"}},
+ {id:"ASM-2",t:"1枚絵が意匠の正本",ai:["i2"],det:{w:"参考をfew-shotで渡し→レイアウト文法・密度を踏襲→1枚絵で生成。カンプ・バナー・SNS・FVはこれで完成品",d:"部分FBはインペイントのみ（全体再生成禁止）",y:"部品を別々に作ると統一感が死ぬ（実証済み）。1枚絵は呼吸が1回で決まる"}},
+ {id:"ASM-3",t:"オリジナルは色味とコピーだけ（パクリ境界線）",ai:["cl"],det:{w:"借りてよいのは骨格(配置・面積比・重なり・密度)のみ。色味=自トンマナ変換必須／コピー=copy-transform産のみ(構文直訳禁止)／署名あしらいは置換",o:"参考と並べて「別のキャンペーン」に見えたら合格",skl:["copy-transform"]}},
+ {id:"ASM-4",t:"アセンブリはLP実装時のみ",ai:["cl","i2"],det:{w:"承認済み1枚絵をマスターにfew-shotで部品を切り出し生成→HTMLは配置と本文テキストのみ",d:"CSSでグラデ/光沢/ボタン等の意匠を描いたら工程違反=作り直し",y:"UI部品(検索窓・CTA・バッジ)も全てエンジン産"}},
+ {id:"ASM-5",t:"文字の憲法",ai:["cl"],det:{w:"見せる文字(キャッチ・CTA文言・バッジ)=エンジン産のみ／読む文字(FAQ回答・長文・特商法)=HTML",y:"速度・SEO・可読性の担保"}}
 ]},
-L1:{title:"L1 バナー単体",cmd:"◯◯のバナー作って ＋使う媒体",nodes:[
+L1:{title:"L1 バナー・FV（1枚絵）",cmd:"◯◯のバナー/FV作って ＋使う媒体",nodes:[
  {id:"L1-A",t:"カルテ読込 → 訴求決定",ai:["cl"],det:{w:"媒体・ジャーニー位置を特定して訴求とトーンを決める",o:"訴求軸が1行で言える"}},
- {id:"L1-B",t:"素因子分解",ai:["cl"],det:{w:"メインビジュアル/キャッチ/サブ/権威バッジ(SP2つまで)/CTA一式(帯・食い込みバッジ)/マイクロコピー/オファー/緊急性リボン に分解しTier S/A/B判定",o:"全要素にTierが付いている"}},
- {id:"L1-C",t:"要素ごとに個別生成",ai:["i2","nb"],det:{w:"要素ごとにDrive該当フォルダ+pool激選2件→技法番号+処方(CTA4点セット等)を注入した専用プロンプトで生成。Tier Sは構図×トンマナ2軸の複数案",tool:"gen_image.py(自動リトライ) ¥33/枚(Image2.0 high)・¥20(NanoBanana)",skl:["design-brain","adx-design"],o:"要素criticで文字正確性・技法適用・AIっぽさ3禁止・景表法が全pass"}},
- {id:"L1-D",t:"組立（アセンブリ）",ai:["cl"],det:{w:"合格要素をパレットHEX・光源方向統一で合成。意匠は1pxも足さない",o:"要素間トンマナ不整合ゼロ"}},
- {id:"L1-E",t:"CEO一言FB",ai:["ceo"],g:1,det:{d:"どれが良い/どこが違う（一言でOK）",w:"部分FBはその要素だけ再生成orインペイント——全体作り直し禁止(§M)",o:"「正解」or採用→fb-log記録"}}
+ {id:"L1-B",t:"CDブリーフ",ai:["cl"],det:{w:"①実写/イラスト判定(デフォルト実写) ②トンマナ(参考実画像を最低2枚目視) ③コピー精度の掟 ④リサーチ接続 ⑤マスター参考の記録(業種フォルダの枚数・マッチ度)",d:"業種フォルダ3枚未満なら制作前にCEOへ投入依頼",skl:["creative-direction","image-prompt-director"],o:"CDブリーフmd保存"}},
+ {id:"L1-C",t:"コピー独立開発",ai:["cl"],det:{w:"Gate1 What確定→Gate2 禁止ワード+技法タグ15案量産→Gate3 棄却ルーブリック→Top3。一等コピー10〜15字・切り口4型・行動経済学3点",skl:["copy-transform","psychology-core"],o:"技法タグ+選定理由付きTop3"}},
+ {id:"L1-D",t:"few-shot模倣で1枚絵生成",ai:["i2"],det:{w:"業種フォルダのマスター参考を実画像で渡す→骨格踏襲・色味変換・コピー差し替えで生成。A/Bは切り口違い",tool:"gen_image.py(生成/edits・自動リトライ) ¥33/枚",o:"critic: 文言一字一句/NG訴求7/あしらいの格/実写4項目(影・質感・光の方向・縮小テスト) 全pass",skl:["design-brain"]}},
+ {id:"L1-E",t:"CEO一言FB",ai:["ceo"],g:1,det:{d:"どれが良い/どこが違う（一言でOK）",w:"部分FBはインペイントで該当箇所のみ修正——全体作り直し禁止",o:"「正解」or採用→fb-log記録・勝ち参考を業種フォルダへ還流"}}
 ]},
-L2:{title:"L2 LP一気通貫",cmd:"◯◯のLP作って ＋参考URL",nodes:[
- {id:"L2-A",t:"参考の実測解剖＋リサーチ",ai:["cl","ag"],det:{w:"参考LPのフォント・色・構造を実数値で解剖＋不足リサーチ追補",tool:"lp_anatomize.mjs(Playwright) / Figma REST API",o:"実測トークンが取れている"}},
- {id:"L2-B",t:"コピー執筆",ai:["cl"],det:{w:"原則ID付き。scent一致(広告↔FV)・高単価はELM中心ルート→証拠厚く・PASONA/AIDCA・冒頭3秒フック",ref:"lp-fv-axioms.md（公理集）",skl:["writing","psychology-core","cognitive-rhythm-writing"],o:"設計根拠ブロックあり＋FVが3秒テストを通る想定"}},
- {id:"L2-C",t:"方向カンプ2〜4案 → CEOが選ぶ",ai:["i2","ceo"],g:1,det:{w:"構図×トンマナ2軸で発散（方向確認用・トレース元ではない）",d:"A/Bの一言で方向選択——通過まで実装しない",skl:["design-brain"],o:"CEOの選択が出ている"}},
- {id:"L2-D",t:"素因子分解 → 要素別生成",ai:["cl","i2","nb"],det:{w:"FV各パーツ＋Body各セクション(CTAブロック/比較表/実績帯/声/エンブレム/ステップ図/料金カード/区切り)を選択トンマナで個別生成→要素critic",ref:"Drive要素別12フォルダ＋業種型ツリーのデザイン処方",skl:["design-brain","adx-design"],o:"全要素pass（比較表=自社列浮かせ+締め文 等プール処方適用）"}},
- {id:"L2-E",t:"組立・実装",ai:["cl"],det:{w:"見せる文字=エンジン産の配置のみ／読む文字=HTML。スクロールモーション(cubic-bezier(.4,0,.2,1)・linear禁止)・カウントアップ・Body15-20セクション・レスポンシブ",o:"意匠判断ゼロ＋LCP2.5秒以内",ref:"ui-patterns.md",skl:["improve-animations","adx-design"]}},
- {id:"L2-F",t:"敵対レビュー → 公開",ai:["ag","ceo"],g:1,det:{w:"公理チェック(輝度4.5:1・CTA局所コントラスト・フォーム≤8)→Fable×Codexが視覚+コピー(scent・Conviction)を検証→公開→LP上タップFBモード",o:"致命傷ゼロ＋CEO公開承認",skl:["codex-cross-check"]}}
+L2:{title:"L2 LP一気通貫",cmd:"◯◯のLP作って",nodes:[
+ {id:"L2-A",t:"参考解剖＋コピー執筆",ai:["cl","ag"],det:{w:"参考LP解剖(価格の見せ方・CTA反復・共通パターン)＋全セクションのコピーをcopy-transform経由で執筆",skl:["copy-transform","writing","psychology-core"],o:"セクション構成表+全文言確定"}},
+ {id:"L2-B",t:"FV: 参考の型違いで複数案 → CEO選択",ai:["i2","ceo"],g:1,det:{w:"業種フォルダの参考をマスターに、型違い(高密度/信頼/診断/実例証明 等)で1枚絵を2〜4案",d:"どれを本命にするか一言",o:"FV正本確定",skl:["creative-direction","design-brain"]}},
+ {id:"L2-C",t:"Body: 背景リズム表 → セクション1枚絵",ai:["cl","i2"],det:{w:"先に背景リズム表を設計(白⇄色交互・密度の波・山場2箇所まで・写真/UIの再登場・斜めのつなぎ)→セクションごとに1枚絵生成",d:"同一トンマナの統一プロンプト連打=のっぺりLP禁止(実証済み)",o:"全セクションcritic pass",skl:["creative-direction"]}},
+ {id:"L2-D",t:"組立・実装",ai:["cl"],det:{w:"セクション画像の縦積み＋CTAは正本FVから切り出し再利用＋読む文字(FAQ/特商法/フッター)=HTML＋追従CTA＋スクロールモーション",o:"CSS意匠ゼロ・LCP2.5秒以内",skl:["improve-animations","adx-design"]}},
+ {id:"L2-E",t:"敵対レビュー → 公開",ai:["ag","ceo"],g:1,det:{w:"公理チェック→Fable×Codex視覚+コピー検証→CEO公開承認→LP上タップFB",skl:["codex-cross-check"],o:"致命傷ゼロ＋公開"}}
 ]},
 L3:{title:"L3 動くFV（シネマグラフ）",cmd:"FV動かして",nodes:[
  {id:"L3-A",t:"素材画生成",ai:["nb"],det:{w:"FVカンプのトンマナで素材を生成",tool:"NanoBanana ¥20/枚"}},
